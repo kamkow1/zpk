@@ -12,9 +12,10 @@
         "symfony/flex": "^1.17|^2",
         "symfony/framework-bundle": "5.4.*",
         "symfony/runtime": "5.4.*",
-        "symfony/yaml": "5.4.*"
-    },
-    "require-dev": {
+        "symfony/twig-bundle": "5.4.*",
+        "symfony/ux-twig-component": "^2.9",
+        "symfony/yaml": "5.4.*",
+        "twig/twig": "^3.0"
     },
     "config": {
         "allow-plugins": {

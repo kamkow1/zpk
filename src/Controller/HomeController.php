@@ -3,19 +3,12 @@
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class HomeController
+class HomeController extends AbstractController
 {
 	public function index(): Response
 	{
-		$html = <<<HTML
-			<html>
-			<body>
-				<h1>Siema</h1>
-			</body>
-			</html>
-		HTML;
-
-		return new Response($html);
+		return $this->render('home.html.twig');
 	}
 }
