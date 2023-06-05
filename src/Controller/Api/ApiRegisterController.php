@@ -5,9 +5,10 @@ namespace App\Controller\Api;
 use Symfony\Component\HttpFoundation\{Response, Request};
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Repository\AccountRepository; 
+use App\Repository\AccountRepository;
+use App\Entity\Account;
 
-class ApiLoginController extends AbstractController
+class ApiRegisterController extends AbstractController
 {
 	public function index(Request $req, AccountRepository $ar): Response
 	{	
@@ -15,15 +16,24 @@ class ApiLoginController extends AbstractController
 
 		$email = $json['email'];
 		$password = $json['password'];
+		$phone = $json['phone'];
 
 		$user = $ar->findOneByEmail($email);
 		$status = 'OK';
-		if (!$user) 
+		if ($user) 
 		{
-			$status = 'Nie ma takiego użytkownika';
+			$status = 'Użytkownik o takim emailu jest już zarejestrowany';
+			$data = array('status' => $status);
+			return $this->json($data);
 		}
 
-		$data = array('status' => $status, 'email' => $email);
+		$a = new Account();
+		$a->setEmail($email);
+		$a->setPassword($password);
+		$a->setPhone($phone);
+		$ar->save($a, true);
+
+		$data = array('status' => $status);
 		return $this->json($data);
 	}
 }

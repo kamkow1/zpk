@@ -6,6 +6,14 @@ login:
   path: /login
   controller: App\Controller\LoginController::index
 
+register:
+  path: /register
+  controller: App\Controller\RegisterController::index
+
 api_login:
   path: /api/login
   controller: App\Controller\Api\ApiLoginController::index
+
+api_register:
+  path: /api/register
+  controller: App\Controller\Api\ApiRegisterController::index
