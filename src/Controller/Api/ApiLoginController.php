@@ -9,7 +9,10 @@ use App\Repository\AccountRepository;
 
 class ApiLoginController extends AbstractController
 {
-	public function index(Request $req, AccountRepository $ar): Response
+	public function index(
+			Request $req,
+			AccountRepository $ar
+	): Response
 	{	
 		$json = json_decode($req->getContent(), true);
 
@@ -21,9 +24,23 @@ class ApiLoginController extends AbstractController
 		if (!$user) 
 		{
 			$status = 'Nie ma takiego użytkownika';
+			$data = array('status' => $status);
+			return $this->json($data);
 		}
 
-		$data = array('status' => $status, 'email' => $email);
+		if (password_verify($password, $user->getPassword()) == 0)
+		{
+			$status = 'Błędne hasło';
+			$data = array('status' => $status);
+			return $this->json($data);
+		}
+
+		$data = array(
+			'status' => $status,
+			'email' => $email,
+			'token' => $token
+		);
+		
 		return $this->json($data);
 	}
 }

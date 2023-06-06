@@ -23,15 +23,17 @@ class ApiRegisterController extends AbstractController
 		if ($user) 
 		{
 			$status = 'Użytkownik o takim emailu jest już zarejestrowany';
-			$data = array('status' => $status);
-			return $this->json($data);
 		}
+		else
+		{
+			$password = password_hash($password, PASSWORD_BCRYPT);
 
-		$a = new Account();
-		$a->setEmail($email);
-		$a->setPassword($password);
-		$a->setPhone($phone);
-		$ar->save($a, true);
+			$a = new Account();
+			$a->setEmail($email);
+			$a->setPassword($password);
+			$a->setPhone($phone);
+			$ar->save($a, true);
+		}
 
 		$data = array('status' => $status);
 		return $this->json($data);
