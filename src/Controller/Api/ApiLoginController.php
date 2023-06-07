@@ -20,12 +20,9 @@ class ApiLoginController extends AbstractController
 		$password = $json['password'];
 
 		$user = $ar->findOneByEmail($email);
-		$status = 'OK';
 		if (!$user) 
 		{
-			$status = 'Nie ma takiego użytkownika';
-			$data = array('status' => $status);
-			return $this->json($data);
+			return $this->json($status = 404);
 		}
 
 		if (password_verify($password, $user->getPassword()) == 0)
@@ -37,10 +34,9 @@ class ApiLoginController extends AbstractController
 
 		$data = array(
 			'status' => $status,
-			'email' => $email,
-			'token' => $token
+			'email' => $email
 		);
 		
-		return $this->json($data);
+		return $this->json($data, $status = 200);
 	}
 }

@@ -19,10 +19,9 @@ class ApiRegisterController extends AbstractController
 		$phone = $json['phone'];
 
 		$user = $ar->findOneByEmail($email);
-		$status = 'OK';
 		if ($user) 
 		{
-			$status = 'Użytkownik o takim emailu jest już zarejestrowany';
+			return $this->json($status = 409);
 		}
 		else
 		{
@@ -35,7 +34,6 @@ class ApiRegisterController extends AbstractController
 			$ar->save($a, true);
 		}
 
-		$data = array('status' => $status);
-		return $this->json($data);
+		return $this->json($status = 201);
 	}
 }
