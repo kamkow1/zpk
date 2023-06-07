@@ -5,7 +5,6 @@ namespace App\Components;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
 #[AsTwigComponent]
-class ErrorMessage 
+class Message 
 {
-	public string $text = 'Unknown Error has occured';
 }

@@ -7,6 +7,7 @@
 </head>
 <body>
 	{{ component('NavBar') }}
+	{{ component('Message') }}
 	<div class="d-flex justify-content-center">
 		<form class="w-25" id="login-form">
 			<div class="mb-3">
@@ -25,6 +26,15 @@
 		<a href="/register">Zarejestruj się!</a>
 	</div>
 	<script>
+		function clearStorage() {
+    		let session = sessionStorage.getItem('register');
+    		if (!session) {
+				localStorage.removeItem('remove');
+			}
+			sessionStorage.setItem('register', 1);
+		}
+		window.addEventListener('load', clearStorage);
+
 
 	const form = document.getElementById('login-form');
 	form.addEventListener('submit', (e) => {
@@ -40,10 +50,23 @@
 				password: password,
 			}),
 		})
-		.then((res) => res.json())
-		.then((data) => {
-			console.log(data);
-			window.location = '/';
+		.then(async (res) => {
+			let color = 'success';
+			let text = 'Wystąpił błąd';
+			if (res.status != 200) {
+				color = 'danger';
+			} else {
+				const data = await res.json();
+				console.log(data);
+				text = 'zalogowano';
+
+				sessionStorage.setItem('ZPK_EMAIL', data.email);
+			}
+
+			const msg = document.getElementById('status-msg');
+			msg.innerText = text;
+			msg.classList.add('text-' + color);
+			msg.classList.remove('d-none');
 		});
 	});
 

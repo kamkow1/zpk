@@ -32,10 +32,7 @@ class ApiLoginController extends AbstractController
 			return $this->json($data);
 		}
 
-		$data = array(
-			'status' => $status,
-			'email' => $email
-		);
+		$data = array('email' => $email);
 		
 		return $this->json($data, $status = 200);
 	}
