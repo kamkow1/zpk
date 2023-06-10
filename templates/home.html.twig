@@ -3,10 +3,46 @@
 <head>
 	<title>Zakład Pogrzebowy Kowalczyk</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<link ref="stylesheet" href="https://fonts.googleapis.com/css?family=Great+Vibes">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+<style>
+
+#page-header {
+	background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp3883885.jpg&f=1&nofb=1&ipt=9756e97205638589cac6f68cc4b09e97ad6e1f56f76c8d5c8424d97c41695771&ipo=imagesw);
+	height: 500px;
+}
+
+#main-content {
+	background-color: #9e979c
+}
+
+</style>
+
 </head>
 <body>
 	{{ component('NavBar') }}
-	Siema 123
+
+	<div class="d-flex justify-content flex-column align-items-center" id="page-header">
+		<h1 class="text-warning" id="main-text">Zakład Pogrzebowy Kowalczyk</h1>
+	</div>
+	<h3 class="p-3 text-center bg-secondary m-0 text-warning">Nasze oferty</h3>
+	<div id="main-content">
+		<div class="text-center p-5">
+			<h5>Trumny</h5>
+			Nasza firma dostarcza najwyższej jakości, ręcznie robione trumny
+			<img class="w-25 m-5" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi0.wp.com%2Ftheverybesttop10.com%2Fwp-content%2Fuploads%2F2014%2F04%2FThe-World%25E2%2580%2599s-Top-10-Most-Unusual-Coffins-2.jpg%3Fresize%3D510%252C343&f=1&nofb=1&ipt=849e5cb8d71afc762f049e8c22c6a4c53b6506e95f8552b955ec0040f8d48559&ipo=images">
+		</div>
+		<div class="text-center p-5">
+			<h5>Urny</h5>
+			W naszej ofercie znajdą się urny w najciekawszych kształtach i wzorach
+			<img class="m-5 w-25" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg0.etsystatic.com%2F150%2F0%2F12528018%2Fil_340x270.1102900898_kwo3.jpg&f=1&nofb=1&ipt=3d6ed1c453d3146e9ce018add71950e8f2b6c2ff224aa647b3481274ea68de5f&ipo=images">
+		</div>
+		<div class="text-center p-5">
+			<h5>Samochody</h5>
+			Wynajmujemy samochody najwyższej klasy do transportu osoby zmarłej
+			<img class="m-5 w-25" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.gibsonhousefunerals.co.uk%2Fwp-content%2Fuploads%2F2015%2F08%2Ffred-hamer-vehicles.jpg&f=1&nofb=1&ipt=75e9f5e7945eca07bed2b45e96d4c5c6fcce65e21730d2ada3a38fe79ff94806&ipo=images">
+		</div>
+	</div>
 </body>
 </html>
