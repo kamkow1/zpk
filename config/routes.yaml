@@ -26,6 +26,10 @@ login_auth:
   path: /login/auth
   controller: App\Controller\LoginController::auth
 
-api_register:
+register_create:
   path: /register/create
   controller: App\Controller\RegisterController::create
+
+products:
+  path: /products
+  controller: App\Controller\ProductController::index
