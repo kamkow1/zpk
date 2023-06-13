@@ -22,10 +22,10 @@ reviews_create:
   path: /reviews/create
   controller: App\Controller\ReviewsController::create
 
-api_login:
-  path: /api/login
-  controller: App\Controller\Api\ApiLoginController::index
+login_auth:
+  path: /login/auth
+  controller: App\Controller\LoginController::auth
 
 api_register:
-  path: /api/register
-  controller: App\Controller\Api\ApiRegisterController::index
+  path: /register/create
+  controller: App\Controller\RegisterController::create
