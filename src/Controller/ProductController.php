@@ -15,7 +15,12 @@ class ProductController extends AbstractController
 	): Response
 	{
 		$type = $req->query->get('type');
-		$products = $pr->getAllByType($type, true);	
+		$products = null;
+		if ($type == 'sale') {
+			$products = $pr->getAllOnSale(true);
+		} else {
+			$products = $pr->getAllByType($type, true);	
+		}
 
 		return $this->render('products.html.twig', [
 			'products' => $products
